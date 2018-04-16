@@ -126,6 +126,14 @@ namespace Parcial3_Base
             int hrs = 0;
             int mins = 0;
             int segs = 0;
+            float tres6 = (float)3600.0;
+
+            hrs = (int)(totalSegs / 3600f);
+            mins = (int)((((totalSegs / 3600f) - hrs) * 60) - mins);
+            segs = (int)((((totalSegs / 3600f) - hrs) * 60f) % 60) ;
+            //segs = ((((totalSegs / 3600f) - hrs) * 60) - mins) % 60;
+
+
             return string.Format("{0} hrs : {1} mins : {2} segs", hrs, mins, segs);
         }
 
@@ -151,7 +159,37 @@ namespace Parcial3_Base
         /// <returns>El primer número primo mayor que n</returns>
         public int ProximoPrimo(int n)
         {
-            return 0;
+            
+            bool es = false;
+            int resultado = 0;
+
+            if (n == 1)
+            {
+                resultado = 2;
+            }
+            else
+            {
+                for (int a = n + 1; es == false; a++)
+                {
+                    for (int i = 2; i < a; i++)
+                    {
+                        if (a % i == 0)
+                        {
+                            es = false;
+                            break;
+                        }
+                        else
+                        {
+                            es = true;
+                        }
+
+                    }
+                    resultado = a;
+                }
+            }
+            
+            
+            return resultado;
         }
 
         /// <summary>
@@ -164,7 +202,23 @@ namespace Parcial3_Base
         /// <returns></returns>
         public int[,] CombinaMatrices(int[,] A, int[,] B)
         {
-            return null;
+
+            if((A.GetLength(0) == B.GetLength(0)) && (A.GetLength(1) == B.GetLength(1)))
+            {
+                for (int i = 0; i <= A.GetLength(0) -1; i++)
+                {
+
+                    B[i, i] = A[i, i];
+                }
+
+
+            }
+            else
+            {
+                B = null;
+            }
+
+            return B;
         }
 
         #endregion HARD
